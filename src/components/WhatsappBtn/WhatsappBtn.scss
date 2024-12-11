@@ -1,0 +1,49 @@
+.whatsapp-btn {
+  cursor: pointer;
+  z-index: 40;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  background-color: #00e676;
+  bottom: 30px;
+  left: 30px;
+  border-radius: 50%;
+  border: 3px solid var(--white-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+  // &:hover {
+  //   transform: scale(1.1);
+  // }
+}
+.callus-btn {
+  cursor: pointer;
+  z-index: 40;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 30px;
+  left: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--white-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+  // &:hover {
+  //   transform: scale(1.1);
+  // }
+}
