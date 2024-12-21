@@ -9,8 +9,8 @@ import SizeTablePage from "./pages/SizeTablePage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import ShippingPolicyPage from "./pages/ShippingPolicyPage";
 import SingleProductPage from "./pages/SingleProductPage";
-import { CheckoutPage } from "./pages/CheckoutPage";
 import { FavoritesPage } from "./pages/FavoritesPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const router = createBrowserRouter([
   {

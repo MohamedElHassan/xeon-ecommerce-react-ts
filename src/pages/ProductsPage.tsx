@@ -5,6 +5,9 @@ import { products } from "@/data/products";
 import { FilterOptions, Product, SortOption } from "@/types";
 import { useEffect, useState } from "react";
 import ProductList from "@/components/ProductList";
+import { useLocation } from "react-router-dom";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { ShoppingBag } from "lucide-react";
 
 const ProductsPage = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
@@ -18,6 +21,8 @@ const ProductsPage = () => {
     maxPrice: Math.max(...products.map((p) => p.price)),
   });
   const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
+  const [showMessage, setShowMessage] = useState(false);
 
   // Helper function to calculate discounted price
   const getDiscountedPrice = (product: Product) => {
@@ -26,6 +31,16 @@ const ProductsPage = () => {
     }
     return product.price;
   };
+
+  useEffect(() => {
+    if (location.state?.message) {
+      setShowMessage(true);
+      // Clear the message after showing it
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 5000);
+    }
+  }, [location]);
 
   useEffect(() => {
     let result = products;
@@ -83,7 +98,13 @@ const ProductsPage = () => {
   }, [filterOptions, sortOption, searchQuery]);
 
   return (
-    <>
+    <div className="container mx-auto px-4 py-8">
+      {showMessage && location.state?.message && (
+        <Alert className="mb-6">
+          <ShoppingBag className="h-5 w-5" />
+          <AlertDescription>{location.state.message}</AlertDescription>
+        </Alert>
+      )}
       <div className="flex justify-center items-center py-5 px-2 flex-col">
         <div className="text-center flex justify-center items-center flex-col gap-5 font-archivo mb-4">
           <h1 className="text-7xl md:text-6xl sm:text-5xl font-bold">
@@ -108,7 +129,7 @@ const ProductsPage = () => {
           <ProductList gap={1} cardWidth={280} products={filteredProducts} />
         </main>
       </div>
-    </>
+    </div>
   );
 };
 
