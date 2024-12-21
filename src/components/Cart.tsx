@@ -6,11 +6,13 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { removeFromCart, updateQuantity } from "../store/features/cartSlice";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Link } from "react-router-dom";
 
 export function Cart() {
   const dispatch = useAppDispatch();
@@ -45,7 +47,10 @@ export function Cart() {
     <Sheet>
       <SheetTrigger className="text-3xl" asChild>
         <div className="relative group">
-          <PiShoppingCartSimpleBold size={25} className="group-hover:scale-125 transition-all duration-300 cursor-pointer" />
+          <PiShoppingCartSimpleBold
+            size={25}
+            className="group-hover:scale-125 transition-all duration-300 cursor-pointer"
+          />
           {items.length > 0 && (
             <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
               {items.length}
@@ -71,7 +76,7 @@ export function Cart() {
                   className="flex items-center gap-4 border-b pb-4"
                 >
                   <img
-                    src={item.image}
+                    src={item.image[0]}
                     alt={item.name}
                     className="h-20 w-20 object-cover rounded-md"
                   />
@@ -80,7 +85,7 @@ export function Cart() {
                     <p className="text-sm text-muted-foreground">
                       Size: {item.selectedSize} | Color: {item.selectedColor}
                     </p>
-                    <p className="text-sm font-medium">${item.price}</p>
+                    <p className="text-sm font-medium">EGP{item.price}</p>
                     <div className="mt-2 flex items-center gap-2">
                       <Button
                         variant="outline"
@@ -135,9 +140,13 @@ export function Cart() {
               <div className="mt-4 flex flex-col gap-4">
                 <div className="flex justify-between">
                   <span className="font-semibold">Total:</span>
-                  <span className="font-semibold">${total.toFixed(2)}</span>
+                  <span className="font-semibold">EGP{total.toFixed(2)}</span>
                 </div>
-                <Button className="w-full">Checkout</Button>
+                <SheetClose className="flex items-center" asChild>
+                  <Link to="/checkout">
+                    <Button className="w-full">Checkout</Button>
+                  </Link>
+                </SheetClose>
               </div>
             </>
           )}

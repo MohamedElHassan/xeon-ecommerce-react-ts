@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { orderService } from "@/api";
 type Props = {};
 interface ApiResponse {
   success: number;
@@ -23,37 +24,15 @@ interface ApiResponse {
   };
 }
 
-const token =
-  "bc9d16db3c1a33ce1ed5f0ae8d56ce8c0d3d85526406ed4ed0c5acd8021114f6";
 const TrackOrderPage = (props: Props) => {
+
   const [orderStatus, setOrderStatus] = useState([]);
-  const [orderCode, setOrderCode] = useState("24409413");
+  const [orderCode, setOrderCode] = useState("24810057");
   const getOrderStatus = async () => {
     try {
-      const response = axios.get(
-        `https://backoffice.turbo-eg.com/external-api/search-order?authentication_key=${token}&search_Key=${orderCode}`
-        // ,
-        // {
-        //   method: "GET",
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //     Accept: "application/json",
-        //     "Content-Type": "application/json",
-        //   },
-        // }
-      );
-      // const response = await fetch(
-      //   `https://backoffice.turbo-eg.com/external-api/search-order?authentication_key=${token}&search_Key=${orderCode}`,
-      //   {
-      //     method: "GET",
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //       Accept: "application/json",
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
-      console.log(response);
+      const data = await orderService.getOrderStatus(orderCode);
+      console.log(data.result);
+      setOrderStatus(data);
     } catch (error) {
       console.log("getOrderStatus Error: ", error);
     }

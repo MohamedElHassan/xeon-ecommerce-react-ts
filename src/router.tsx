@@ -8,6 +8,9 @@ import TrackOrderPage from "./pages/TrackOrderPage";
 import SizeTablePage from "./pages/SizeTablePage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import ShippingPolicyPage from "./pages/ShippingPolicyPage";
+import SingleProductPage from "./pages/SingleProductPage";
+import { CheckoutPage } from "./pages/CheckoutPage";
+import { FavoritesPage } from "./pages/FavoritesPage";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductsPage />,
+      },
+      {
+        path: "product/:id",
+        element: <SingleProductPage />,
       },
       {
         path: "contact",
@@ -43,8 +50,14 @@ const router = createBrowserRouter([
         path: "shipping-policy",
         element: <ShippingPolicyPage />,
       },
-
-      // Add more routes here as needed
+      {
+        path: "checkout",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "favorites",
+        element: <FavoritesPage />,
+      },
     ],
   },
 ]);

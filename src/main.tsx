@@ -11,9 +11,9 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      {/* <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme"> */}
         <RouterProvider router={router} />
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </Provider>
   </React.StrictMode>
 );

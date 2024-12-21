@@ -46,7 +46,19 @@ const ShippingPolicyPage = (props: Props) => {
             <br />
             If you have any inquiries regarding the shipping process or order
             tracking, please feel free to contact us via{" "}
-            <Link className="text-blue-500 hover:underline hover:text-black " to={"/contact"}>Contact Us Page</Link>.
+            <Link
+              className="text-blue-500 hover:underline hover:text-black "
+              to={"/contact"}
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              Contact Us Page
+            </Link>
+            .
             <br />
             <br />
             We are here to ensure a smooth and outstanding shopping experience

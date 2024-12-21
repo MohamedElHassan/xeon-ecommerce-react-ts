@@ -65,7 +65,7 @@ export default function MobileMenu() {
       <SheetTrigger asChild>
         <CgMenuLeft
           size={25}
-          className="hidden md:block cursor-pointer hover:scale-125 transition-all duration-300 "
+          className="hidden lg:block cursor-pointer hover:scale-125 transition-all duration-300 "
         />
       </SheetTrigger>
       {/* <SheetContent side={'left'}> */}
