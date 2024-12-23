@@ -59,7 +59,7 @@ const TrackOrderPage = (props: Props) => {
           type="text"
         />
         <Button
-          className="py-6 px-24 text-xl hover:scale-105 transition-transform duration-300"
+          className="py-6 px-24 text-xl hover:bg-black/80 transition-transform duration-300"
           onClick={getOrderStatus}
         >
           Get Order Status

@@ -49,7 +49,7 @@ const NavLinkWithSheet: React.FC<NavLinkWithSheetProps> = ({ to, label }) => {
     <SheetClose className="flex items-center"  asChild>
       <NavLink
         to={to}
-        className={`flex items-center text-lg font-medium transition-colors duration-200 ease-in-out hover:text-white hover:bg-gray-900 p-2 rounded-sm w-full ${
+        className={`flex items-center text-lg font-medium transition-colors duration-200 ease-in-out hover:text-white hover:bg-black/80 p-2 rounded-sm w-full ${
           isActive ? "bg-black text-white" : ""
         }`}
       >

@@ -1,12 +1,12 @@
-import React from 'react';
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
-  Mail, 
-  MapPin 
-} from 'lucide-react';
+import React from "react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -35,24 +35,29 @@ const Footer: React.FC<FooterProps> = ({
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Contact", href: "/contact" }
+    { label: "Contact", href: "/contact" },
   ],
-  newsletterPlaceholder = "Enter your email"
+  newsletterPlaceholder = "Enter your email",
 }) => {
   const currentYear = new Date().getFullYear();
 
-  const SocialIcon = ({ Icon, link }: { Icon: React.ElementType, link?: string }) => (
+  const SocialIcon = ({
+    Icon,
+    link,
+  }: {
+    Icon: React.ElementType;
+    link?: string;
+  }) =>
     link ? (
-      <a 
-        href={link} 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-white hover:text-gray-300 transition-colors"
       >
         <Icon className="w-6 h-6" />
       </a>
-    ) : null
-  );
+    ) : null;
 
   return (
     // <footer className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
@@ -63,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">{companyName}</h2>
           <p className="text-gray-300">{companyTagline}</p>
-          
+
           {/* Social Icons */}
           <div className="flex space-x-4 pt-4">
             <SocialIcon Icon={Facebook} link={socialLinks.facebook} />
@@ -79,8 +84,8 @@ const Footer: React.FC<FooterProps> = ({
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <a 
-                  href={link.href} 
+                <a
+                  href={link.href}
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {link.label}
@@ -109,8 +114,8 @@ const Footer: React.FC<FooterProps> = ({
         <div>
           <h3 className="text-xl font-semibold mb-4">Stay Updated</h3>
           <div className="flex space-x-2">
-            <Input 
-              type="email" 
+            <Input
+              type="email"
               placeholder={newsletterPlaceholder}
               className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
             />
@@ -130,8 +135,6 @@ const Footer: React.FC<FooterProps> = ({
 };
 
 export default Footer;
-
-
 
 // const Footer = () => {
 //   return (

@@ -1,7 +1,10 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsappBtn from "./WhatsappBtn/WhatsappBtn";
+import { Toaster } from "@/components/ui/toaster";
+import {CustomToast} from "./CustomToast";
 
 const Layout = () => {
   return (
@@ -11,7 +14,6 @@ const Layout = () => {
         <main className="w-full">
           <Outlet />
         </main>
-        {/* <Footer /> */}
         <Footer
           companyName="Xeon"
           companyTagline="Just Wear it"
@@ -34,8 +36,10 @@ const Layout = () => {
           ]}
           newsletterPlaceholder="Enter your email"
         />
+        <Toaster />
       </div>
       <WhatsappBtn />
+      <CustomToast />
     </>
   );
 };

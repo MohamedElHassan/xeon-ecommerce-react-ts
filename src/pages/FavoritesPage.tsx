@@ -26,7 +26,7 @@ export const FavoritesPage: FC<IFavoritesPageProps> = (props) => {
       </div>
       {favoritesProducts.length !== 0 && (
         <div className="w-full px-10 md:px-5">
-          <ProductList gap={2} cardWidth={280} products={favoritesProducts} />
+          <ProductList gap={2} cardWidth={300} products={favoritesProducts} />
         </div>
       )}
     </>

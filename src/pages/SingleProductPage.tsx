@@ -15,7 +15,11 @@ import { cn } from "@/lib/utils";
 import { products } from "@/data/products";
 import { addToCart } from "@/store/features/cartSlice";
 import { RootState, useAppDispatch, useAppSelector } from "@/store/store";
-import { addToFavorite, removeFromFavorite } from "@/store/features/favoriteSlice";
+import {
+  addToFavorite,
+  removeFromFavorite,
+} from "@/store/features/favoriteSlice";
+import { addToast } from "@/store/features/toastSlice";
 
 export default function SingleProductPage() {
   const dispatch = useAppDispatch();
@@ -27,7 +31,6 @@ export default function SingleProductPage() {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  // const [quantity, setQuantity] = useState(1);
 
   const product = products.find((p) => p.id === id);
 
@@ -85,17 +88,28 @@ export default function SingleProductPage() {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize) {
-      alert("Please select a size");
+    if (!selectedSize || !selectedColor) {
+      dispatch(
+        addToast({
+          message: "Please select size and color",
+          type: "error",
+          duration: 3000,
+        })
+      );
       return;
     }
-    if (!selectedColor) {
-      alert("Please select a color");
-      return;
-    }
-    // Add to cart logic here
+
     dispatch(
       addToCart({ ...product, selectedSize, selectedColor, quantity: 1 })
+    );
+
+    dispatch(
+      addToast({
+
+        message: `${product?.name} has been added to your cart`,
+        type:  "success",
+        duration: 3000,
+      })
     );
   };
 
@@ -168,22 +182,22 @@ export default function SingleProductPage() {
             </div>
             <button
               onClick={() => {
-              // Add to favorite logic here and toggle the button
-              if (productInFavorite.find((p) => p.id === product.id)) {
-                // Remove from favorite logic here
-                dispatch(removeFromFavorite(product.id));
-              } else {
-                dispatch(addToFavorite(product));
-              }
+                // Add to favorite logic here and toggle the button
+                if (productInFavorite.find((p) => p.id === product.id)) {
+                  // Remove from favorite logic here
+                  dispatch(removeFromFavorite(product.id));
+                } else {
+                  dispatch(addToFavorite(product));
+                }
               }}
               className="absolute top-4 right-4 bg-black/20 backdrop-blur p-2 rounded-full 
                    hover:bg-black/40 transition-all duration-300 z-10
                    hover:scale-110 hover:rotate-12"
             >
               {productInFavorite.find((p) => p.id === product.id) ? (
-              <FaHeart className={`text-red-500 w-8 h-8`} />
+                <FaHeart className={`text-red-500 w-8 h-8`} />
               ) : (
-              <Heart className={`text-white w-8 h-8`} />
+                <Heart className={`text-white w-8 h-8`} />
               )}
             </button>
           </div>
